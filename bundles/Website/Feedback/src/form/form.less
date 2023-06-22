@@ -1,0 +1,71 @@
+.feedbackForm {
+  width: @width-websiteLayout;
+  margin: 55px auto 0;
+}
+
+.feedbackForm .feedbackForm-title {
+  font-size: 21px;
+  color: @color-brand;
+}
+
+.feedbackForm .feedbackForm-form {
+  display: flex;
+  margin-top: 20px;
+  padding: 20px 0;
+  border-top: 1px solid @color-gray--lighten;
+  border-bottom: 1px solid @color-gray--lighten;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.feedbackForm .feedbackForm-satisfaction label {
+  display: block;
+  font-weight: normal;
+}
+
+.feedbackForm .feedbackForm-criterion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedbackForm .feedbackForm-criterionName {
+  margin-right: 15px;
+}
+
+.feedbackForm .feedbackForm-criterionName:first-letter {
+  text-transform: capitalize;
+}
+
+.feedbackForm .feedbackForm-criterionValueStar {
+  display: inline;
+  font-family: FontAwesome;
+  color: @color-gray--light;
+  cursor: pointer;
+  font-size: @font-xl;
+}
+
+.feedbackForm .feedbackForm-criterionValueStar:after {
+  content: '\f005';
+}
+
+.feedbackForm .feedbackForm-criterionValueStar--hover {
+  color: @color-red;
+}
+
+
+.feedbackForm .feedbackForm-textNote {
+  width: 475px;
+}
+
+.feedbackForm .feedbackForm-submit {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.feedbackForm .feedbackForm-submitButton {
+  background: @color-red;
+  font-weight: bold;
+  color: @color-paper;
+  text-transform: uppercase;
+}

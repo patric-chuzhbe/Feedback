@@ -1,0 +1,56 @@
+<div class="feedbackForm">
+    <grand-loader ng-show="!vm.ctx"></grand-loader>
+    <div ng-if="!vm.isFeedbackSaved && !vm.ctx.notFound">
+        <div class="feedbackForm-title"
+             ng-bind="'Оцените ваши впечатления от ' + vm.parseProdType(vm.ctx.product.type) + ' ' + vm.ctx.product.name"></div>
+        <div class="feedbackForm-form">
+            <div class="feedbackForm-satisfaction">
+                <label>
+                    <input type="radio" name="feedbackForm-radio"
+                           ng-value="true"
+                           ng-model="vm.satisfaction"/>
+                    Поездка понравилась
+                </label>
+                <label>
+                    <input type="radio" name="feedbackForm-radio"
+                           ng-value="false"
+                           ng-model="vm.satisfaction"/>
+                    Поездка не понравилась
+                </label>
+            </div>
+            <div class="feedbackForm-dynamicCriteria">
+                <div class="feedbackForm-criterion"
+                     ng-repeat="criterion in ::vm.ctx.criteria">
+                    <div class="feedbackForm-criterionName"
+                         ng-bind="::criterion.name"></div>
+                    <div class="feedbackForm-criterionValue"
+                         ng-mouseleave="vm.bringBackHeldStars($index)">
+                        <div class="feedbackForm-criterionValueStar"
+                             ng-repeat="ambiguous in ::[].constructor(vm.ctx.maxRating) track by $index"
+                             ng-class="{'feedbackForm-criterionValueStar--hover': vm.criteria[$parent.$index] && $index + 1 <= vm.criteria[$parent.$index]}"
+                             ng-mouseenter="vm.toggleStars($parent.$index, $index + 1)"
+                             ng-click="vm.selectStars(criterion.id, $index + 1, $parent.$index)"
+                             ng-mouseleave="vm.toggleStars($parent.$index, 0, true)"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="feedbackForm-textNote">
+                <div class="feedbackForm-textNoteTitle">Отзыв:</div>
+                <textarea class="form-control" required
+                          ng-model="vm.textNote"></textarea>
+            </div>
+        </div>
+        <div class="feedbackForm-submit">
+            <a class="feedbackForm-submitButton btn btn-default btn-lg"
+               ng-click="vm.save()">
+               Отправить и получить подарок
+            </a>
+        </div>
+    </div>
+    <div ng-if="vm.isFeedbackSaved">
+        <div class="feedbackForm-title">Спасибо за отзыв!</div>
+    </div>
+    <div ng-if="vm.ctx.notFound">
+        <div class="feedbackForm-title">Поездка не найдена</div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% extends 'Website/Std/src/layout' %}
+
+{% block hat %}
+    {{ Widget.get('Website.Hat', '/') }}
+{% endblock %}
+
+{% block main %}
+    <feedback-form data-feedback-job-id="{{ id }}" data-token="{{ token }}"></feedback-form>
+{% endblock %}
+
+{% block footer %}
+    {{ Widget.get('Website.Footer') }}
+{% endblock %}

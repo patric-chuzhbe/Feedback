@@ -1,0 +1,35 @@
+{% extends 'Foundation/Std/src/emails/html' %}
+{% block body %}
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td style="font-family: verdana, sans-serif;">
+                <p style="font-size: 20px; color: #0972ba; font-weight: bold;">
+                    Здравствуйте, {{ first_name ~ ' ' ~ middle_name ~ ' ' ~ last_name }}!
+                </p>
+                <p style="margin-top: 20px; font-size: 16px;">
+                    {% if product_type == 'obj' %}
+                        Вы отдыхали в отеле
+                    {% elseif product_type == 'exc' %}
+                        Вы участвовали в экскурсии
+                    {% elseif product_type == 'act' %}
+                        Вы участвовали в активном туре
+                    {% elseif product_type == 'camp' %}
+                        Ваш ребенок отдыхал в лагере
+                    {% elseif product_type == 'cru' %}
+                        Вы отдыхали в круизе
+                    {% endif %}
+                    "{{ product_name }}".
+                </p>
+                <p style="margin-top: 20px;">
+                    Пожалуйста, оставьте отзыв об этом.
+                </p>
+                <p style="margin-top: 20px;">
+                    <a href="{{ link }}" target="_blank"
+                       style="display: inline-block; padding: 15px; font-size: 16px; color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; background-color: #e7321f;">
+                        оставить отзыв и получить подарок
+                    </a>
+                </p>
+            </td>
+        </tr>
+    </table>
+{% endblock %}
